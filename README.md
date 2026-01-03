@@ -26,21 +26,33 @@ This tool ingests `.pptx` files, extracts the text, and processes it using a fin
 
 * **Core Logic**: Python 3.10+
 * **AI/ML**: `transformers`, `peft` (LoRA), PyTorch
-* **Document Processing**: `python-pptx` (Input), `WeasyPrint` (Output)
-* **Utilities**: `uuid` (File safety), `json` (Data parsing)
+* **Document Processing**: `python-pptx` (Input), `pdfkit` (Output)
+* **Utilities**: `time` (File safety), `json` (Data parsing)
 
 ## 📂 Project Structure
 
 ```text
-├── models/
-│   ├── base/               # The base Hugging Face model
-│   └── adapter/            # Your fine-tuned LoRA files (adapter_model.safetensors)
+|
 ├── inputs/                 # Temp storage for raw PPTX files (renamed with UUID)
 ├── outputs/                # Storage for generated PDFs
-├── src/
-│   ├── extractor.py        # Extracts text from slides
-│   ├── inference.py        # Loads model & handles the "Translator" Prompt
-│   ├── pdf_gen.py          # Converts JSON -> HTML -> PDF using WeasyPrint
-│   └── utils.py            # UUID generation & file cleanup
-├── main.py                 # Entry point
-└── requirements.txt        # Dependency list
+|── Model_Processing 
+|   |
+|   |──Model_Saved.py       # install the model and the adaptor then save them in the local pc
+|   └──Model_Using.py       # use the adaptore that integrated in the main model to support the Project function
+|───to_show                 # some figures and model result after and before finetunig which decleare the progress of the model
+|   |
+|   |──0.5b/                 # all what related with model 0.5b
+|   |  |
+|   |  |──0.5b_d1           # figure and model(0.5) result before and after while finetune in the first data (500 samples)
+|   |  └──0.5B_d2           #figure and model(0.5) result before and after while finetune in the final data (1000 samples)
+|   |──1.5b/
+|   |  |
+|   |  |──1.5b_d1           # figure and model(1.5) result before and after while finetune in the first data (500 samples)
+|   |  └──1.5B_d2           #figure and model(1.5) result before and after while finetune in the final data (1000 samples)
+|   |──Teacher_result.text  # the result of the Teacher model gemini 2.5 pro
+|   └──Teacher_pdf
+|── Processing_utils.py        # Extracts text from slides
+|── app.py        # Loads model & handles the "Translator" Prompt
+│── debug_app.py          # debug all steps in the workflow
+├── workflow.py
+└── Lora_Finetune.ipynb        # notebook for knowledge distilation and finetuning

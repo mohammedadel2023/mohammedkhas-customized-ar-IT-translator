@@ -17,6 +17,5 @@ base_model = AutoModelForCausalLM.from_pretrained(base_model_id)
 tokenizer.save_pretrained(local_base_path)
 base_model.save_pretrained(local_base_path)
 
-
 model = PeftModel.from_pretrained(base_model, adapter_id)
 model.save_pretrained(local_adapter_path)

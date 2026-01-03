@@ -80,7 +80,7 @@ def process_all_pptx(folder_path, output_json_path):
 def validate_input_file(file_path, slide_number):
     #Check if file exists
     if not os.path.exists(file_path):
-        return 0  
+        return 0
     
     
     #Check PowerPoint file extension
@@ -132,7 +132,6 @@ def process_single_slide(file_path, slide_number):
 #HTML_TO_PDF
 #######################################################
 def render_pdf_from_html_strings(html_text, output_pdf_path):
-    # Check if the tool is installed
     if not os.path.exists(PATH_WKHTMLTOPDF):
         print(f"CRITICAL ERROR: wkhtmltopdf not found at {PATH_WKHTMLTOPDF}")
         print("Please install it from https://wkhtmltopdf.org/downloads.html")
@@ -173,7 +172,7 @@ def render_pdf_from_html_strings(html_text, output_pdf_path):
         print(f"PDF Generation Error: {e}")
         return False
 
-#######################################################
+######################################################
 #unique_output_path
 ######################################################
 def generate_unique_output_path(file_path, slide_number):
