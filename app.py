@@ -3,7 +3,7 @@ import os
 import streamlit.components.v1 as components
 
 # Import the functions from your pipeline
-from Process_funcs import validate_input_file, process_single_slide, render_pdf_from_html_strings, generate_unique_output_path
+from Processing_utils import validate_input_file, process_single_slide, render_pdf_from_html_strings, generate_unique_output_path
 from Model_Processing.Model_Using import translate_and_generate_html
 
 # --- 1. PAGE CONFIGURATION (Arabic Support) ---
